@@ -13,7 +13,8 @@ website:
 
 format:
   html:
-    page-layout: full
+    grid:
+      sidebar-width: 350px
     theme: 
       - cosmo
       - custom.scss
