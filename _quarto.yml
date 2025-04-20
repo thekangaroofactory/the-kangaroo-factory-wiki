@@ -11,9 +11,11 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+    theme: 
+      - cosmo
+      - custom.scss
+    css: 
+      - gfont/css/quicksand.css
+      - custom.css
 
 editor: visual
-
