@@ -13,13 +13,14 @@ website:
 
 format:
   html:
+    grid:
+      margin-width: 50px
+      sidebar-width: 50px
     theme: 
       - cosmo
       - custom.scss
     css: 
       - gfont/css/quicksand.css
       - custom.css
-
-column: screen-inset
 
 editor: visual
