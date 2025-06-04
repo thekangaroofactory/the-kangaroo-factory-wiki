@@ -260,7 +260,7 @@ shinyApp(ui, server)
 ```
 
 | Theme minty | Theme flatly |
-|:--:|:--:|
+|:----------------------------------:|:----------------------------------:|
 | ![](images/clipboard-712001769.png){width="1000"} | ![](images/clipboard-1693013750.png){width="792"} |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
