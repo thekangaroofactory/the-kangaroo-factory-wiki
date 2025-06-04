@@ -12,14 +12,14 @@ p {
 
 
 /* -- Code chunk */
-.cell-code {
+div.cell-code {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 
 /* -- Code chunk output */
-.cell-output {
+div.sourceCode {
   background-color: unset;
   border-color: #bf906c;
 }
