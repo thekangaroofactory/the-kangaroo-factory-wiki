@@ -2,8 +2,6 @@
 title: "Home"
 ---
 
-# TheKangarooFactory Wiki
-
 Welcome to this Wiki.
 
 As most of us do, I tend to keep tons of notes about how to do this or that in a not so organized folder.
