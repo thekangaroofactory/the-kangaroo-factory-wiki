@@ -16,6 +16,10 @@ p {
   margin-bottom: 2rem;
 }
 
+/* -- Code cell */
+.cell {
+  margin-bottom: 2rem;
+}
 
 /* -- Code chunk */
 div.cell-code {

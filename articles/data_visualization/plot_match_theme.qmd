@@ -156,7 +156,7 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a `sass::sass_bundle()` (list-like) object.
+If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a *sass::sass_bundle()* (list-like) object.
 
 ![Theme object structure](images/clipboard-2184099376.png)
 
@@ -260,7 +260,7 @@ shinyApp(ui, server)
 ```
 
 | Theme minty | Theme flatly |
-|:----------------------------------:|:----------------------------------:|
+|:--:|:--:|
 | ![](images/clipboard-712001769.png){width="1000"} | ![](images/clipboard-1693013750.png){width="792"} |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
