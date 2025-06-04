@@ -1,0 +1,52 @@
+---
+title: "How to make your plot match with the global app theme?"
+---
+
+# How to make your plot match with the global app theme?
+
+Plots generated with the [ggplot2](https://ggplot2.tidyverse.org/) library can be customized to improve data visualization & user experience.
+
+example here
+
+But keeping the color arguments aligned across the app can be tedious as you need to copy / paste the color code many times. It also makes your code less reusable in other projects as it will need to be updated in many places.
+
+## Pass colors as arguments of the plot function
+
+Whenever I make a new plot, I always encapsulate the plot layer building into a dedicated function that will be called and return a [ggplot2](https://ggplot2.tidyverse.org/) object (most time it will feed an output with [renderPlot()](https://shiny.posit.co/r/reference/shiny/latest/renderplot.html)). It makes it much easier to maintain the plot code as you can use it directly from the console for fine tuning, but also to reuse that code for another project.
+
+example here
+
+As you will pass the data as an argument to the plot function, a first approach is to define a variable (typically a named vector) that carries the color codes at the app level and pass it as a parameter of dedicated plot functions.
+
+example here
+
+With this, colors can be tuned easily across the app and plot functions can be reused in a different project without much update since you will just update the color variable at the app level.
+
+example here
+
+## Pass theme colors to the plot function
+
+In case your Shiny app is using [bslib](https://rstudio.github.io/bslib/) to build the ui, then it's even possible to reuse the global app theme to feed this color variable and share it to all your plots.
+
+To do so, you need - *from the server side* - to get the current theme that was applied on the ui side.\
+And [bslib](https://rstudio.github.io/bslib/) has a handy function for that:
+
+example here
+
+If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a [`sass::sass_bundle()`](https://rstudio.github.io/sass/reference/sass_layer.html) (list-like) object.
+
+Once again, [bslib](https://rstudio.github.io/bslib/) has made it easy for you and provides a handy function to get the colors out of that theme bundle without effort.
+
+example here
+
+Now you just need to pass this variable to the plot function we customized in the first step and get your plot match with the global app theme.
+
+example here
+
+A basic example is provided in the GitHub repository listed in the references & materials section.
+
+## References & materials
+
+-   The [bslib](https://rstudio.github.io/bslib/) reference documentation: [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html), [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html), [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html)
+
+-   GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
