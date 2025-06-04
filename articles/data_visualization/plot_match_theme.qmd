@@ -2,15 +2,35 @@
 title: "How to make your plot match with the global app theme?"
 ---
 
-A basic example is provided in the GitHub repository listed in the references & materials section.
-
-::: callout-tip
-A basic example is provided in the GitHub repository listed in the references & materials section. @references
-:::
-
 Plots generated with the [ggplot2](https://ggplot2.tidyverse.org/) library can be customized to improve data visualization & user experience.
 
-example here
+```{r}
+#| echo: true
+
+library(ggplot2)
+
+# -- generate data
+data <- data.frame(year = 2020:2025,
+                   value = c(100, 110, 112, 107, 109, 115))
+
+# -- build plot
+p <- ggplot(data,
+       aes(x = year,
+           y = value)) +
+  
+  geom_line(
+    color = "#2596be") +
+  
+  geom_point(
+    size = 4,
+    shape = 21,
+    color = "#2596be",
+    fill = "#eab676")
+
+# -- print
+p
+
+```
 
 But keeping the color arguments aligned across the app can be tedious as you need to copy / paste the color code many times. It also makes your code less reusable in other projects as it will need to be updated in many places.
 
@@ -18,15 +38,79 @@ But keeping the color arguments aligned across the app can be tedious as you nee
 
 Whenever I make a new plot, I always encapsulate the plot layer building into a dedicated function that will be called and return a [ggplot2](https://ggplot2.tidyverse.org/) object (most time it will feed an output with [renderPlot()](https://shiny.posit.co/r/reference/shiny/latest/renderplot.html)). It makes it much easier to maintain the plot code as you can use it directly from the console for fine tuning, but also to reuse that code for another project.
 
-example here
+```{r}
+
+# -- define plot function
+basic_plot <- function(data){
+  
+  # -- build & return plot
+  ggplot(data,
+         aes(x = year,
+             y = value)) +
+    
+    geom_line(
+      color = "#2596be") +
+    
+    geom_point(
+      size = 4,
+      shape = 21,
+      color = "#2596be",
+      fill = "#eab676")
+  
+}
+
+# -- call function
+p <- basic_plot(data)
+
+```
 
 As you will pass the data as an argument to the plot function, a first approach is to define a variable (typically a named vector) that carries the color codes at the app level and pass it as a parameter of dedicated plot functions.
 
-example here
+```{r}
+#| echo: true
+
+# -- define color variable
+colors <- c("primary" = "#2596be", "secondary" = "#eab676")
+
+# -- define plot function with theme argument
+basic_plot <- function(data, theme){
+  
+  # -- build & return plot
+  ggplot(data,
+         aes(x = year,
+             y = value)) +
+    
+    geom_line(
+      color = theme['primary']) +
+    
+    geom_point(
+      size = 4,
+      shape = 21,
+      color = theme['primary'],
+      fill = theme['secondary'])
+  
+}
+
+# -- call function with colors
+p <- basic_plot(data, theme = colors)
+
+# -- print
+p
+```
 
 With this, colors can be tuned easily across the app and plot functions can be reused in a different project without much update since you will just update the color variable at the app level.
 
-example here
+```{r}
+
+# -- update color variable
+colors <- c("primary" = "#5d25be", "secondary" = "#ffff9b")
+
+# -- call function with colors
+p <- basic_plot(data, theme = colors)
+
+# -- print
+p
+```
 
 ## Pass theme colors to the plot function
 
@@ -35,17 +119,148 @@ In case your Shiny app is using [bslib](https://rstudio.github.io/bslib/) to bui
 To do so, you need - *from the server side* - to get the current theme that was applied on the ui side.\
 And [bslib](https://rstudio.github.io/bslib/) has a handy function for that:
 
-example here
+```{r}
+#| eval: false
 
-If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a [`sass::sass_bundle()`](https://rstudio.github.io/sass/reference/sass_layer.html) (list-like) object.
+# -- Dependencies
+library(shiny)
+library(bslib)
 
-Once again, [bslib](https://rstudio.github.io/bslib/) has made it easy for you and provides a handy function to get the colors out of that theme bundle without effort.
+# -- Define ui
+ui <- page_fillable(
+  title = "Demo",
+  
+  # -- Set theme
+  theme = bs_theme(bootswatch = "minty"),
+  
+  # -- Display theme object structure
+  verbatimTextOutput("theme_str")
+  
+)
 
-example here
+
+# -- Define server
+server <- function(input, output) {
+  
+  # -- Get theme
+  theme <- bs_current_theme()
+  
+  # -- Display theme object structure
+  output$theme_str <- renderPrint(str(theme))
+
+}
+
+shinyApp(ui, server)
+```
+
+If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a `sass::sass_bundle()` (list-like) object.
+
+![Theme object structure](images/clipboard-2184099376.png){fig-align="center"}
+
+Once again, [bslib](https://rstudio.github.io/bslib/) has made it easy for you and provides a handy [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html) function to get the colors out of that theme bundle without effort:
+
+```{r}
+#| eval: false
+
+# -- Define ui
+ui <- page_fillable(
+  title = "Demo",
+  
+  # -- Set theme
+  theme = bs_theme(bootswatch = "minty"),
+  
+  # -- Display theme object structure
+  uiOutput("theme_colors")
+  
+)
+
+
+# -- Define server
+server <- function(input, output) {
+  
+  # -- Get theme
+  theme <- bs_current_theme()
+  
+  # -- Get colors from the theme
+  colors <- bs_get_variables(theme, varnames = c("primary", "secondary"))
+  
+  # -- Display theme object structure
+  output$theme_colors <- renderUI(
+    layout_column_wrap(
+    card(
+      card_header(
+        class = "bg-primary"),
+      p("Primary color =", colors['primary'])
+    ),
+    
+    card(
+      card_header(
+        class = "bg-secondary"),
+      p("Secondary color =", colors['secondary'])
+    )))
+  
+}
+
+shinyApp(ui, server)
+```
 
 Now you just need to pass this variable to the plot function we customized in the first step and get your plot match with the global app theme.
 
-example here
+```{r}
+#| eval: false
+
+# -- Define ui
+ui <- page_fillable(
+  title = "Demo",
+  
+  # -- Set theme
+  theme = bs_theme(bootswatch = "minty"),
+  
+  # -- Display theme object structure
+  uiOutput("theme_colors"),
+  plotOutput("plot")
+  
+)
+
+
+# -- Define server
+server <- function(input, output) {
+  
+  # -- Get theme
+  theme <- bs_current_theme()
+  
+  # -- Get colors from the theme
+  colors <- bs_get_variables(theme, varnames = c("primary", "secondary"))
+  
+  # -- Display theme object structure
+  output$theme_colors <- renderUI(
+    layout_column_wrap(
+    card(
+      card_header(
+        class = "bg-primary"),
+      p("Primary color =", colors['primary'])
+    ),
+    
+    card(
+      card_header(
+        class = "bg-secondary"),
+      p("Secondary color =", colors['secondary'])
+    )))
+  
+  # -- Define plot output
+  output$plot <- renderPlot(basic_plot(data, theme = colors))
+  
+}
+
+shinyApp(ui, server)
+
+```
+
+| Theme minty | Theme flatly |
+|:--:|:--:|
+| ![](images/clipboard-712001769.png){width="1000"} | ![](images/clipboard-1693013750.png){width="792"} |
+
+A basic example is provided in the GitHub repository listed below in the references & materials section.
 
 ## References & materials {#references}
 
