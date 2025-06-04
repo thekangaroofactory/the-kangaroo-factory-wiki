@@ -120,7 +120,7 @@ p
 In case your Shiny app is using [bslib](https://rstudio.github.io/bslib/) to build the ui, then it's even possible to reuse the global app theme to feed this color variable and share it to all your plots.
 
 To do so, you need - *from the server side* - to get the current theme that was applied on the ui side.\
-And [bslib](https://rstudio.github.io/bslib/) has a handy function for that:
+And [bslib](https://rstudio.github.io/bslib/) has a [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) function for that:
 
 ```{r}
 #| eval: false
@@ -260,7 +260,7 @@ shinyApp(ui, server)
 ```
 
 |             Theme minty              |            Theme flatly             |
-|:------------------------------------:|:-----------------------------------:|
+|:----------------------------------:|:----------------------------------:|
 | ![](images/clipboard-3381752280.png) | ![](images/clipboard-849529216.png) |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
