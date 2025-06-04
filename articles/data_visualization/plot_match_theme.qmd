@@ -217,7 +217,7 @@ ui <- page_fillable(
   title = "Demo",
   
   # -- Set theme
-  theme = bs_theme(bootswatch = "minty"),
+  theme = bs_theme(bootswatch = "flatly"),
   
   # -- Display theme object structure
   uiOutput("theme_colors"),
@@ -259,9 +259,9 @@ shinyApp(ui, server)
 
 ```
 
-| Theme minty | Theme flatly |
-|:----------------------------------:|:----------------------------------:|
-| ![](images/clipboard-712001769.png){width="1000"} | ![](images/clipboard-1693013750.png){width="792"} |
+|             Theme minty              |            Theme flatly             |
+|:------------------------------------:|:-----------------------------------:|
+| ![](images/clipboard-3381752280.png) | ![](images/clipboard-849529216.png) |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
 
