@@ -35,6 +35,7 @@ div.sourceCode {
 }
 
 /* -- table */
-.table {
+table.table {
+  border: none;
   margin-bottom: 2rem;
 }
