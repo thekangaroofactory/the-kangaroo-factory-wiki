@@ -1,5 +1,6 @@
 ---
 title: "How to make your plot match with the global app theme?"
+output-location: column
 ---
 
 Plots generated with the [ggplot2](https://ggplot2.tidyverse.org/) library can be customized to improve data visualization & user experience.
@@ -155,7 +156,7 @@ shinyApp(ui, server)
 
 If you have a look into that theme object, you will soon understand that diving into it to get the theme colors won't be an easy task. Indeed [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html) returns a [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html) object that is itself defined as a `sass::sass_bundle()` (list-like) object.
 
-![Theme object structure](images/clipboard-2184099376.png){fig-align="center"}
+![Theme object structure](images/clipboard-2184099376.png)
 
 Once again, [bslib](https://rstudio.github.io/bslib/) has made it easy for you and provides a handy [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html) function to get the colors out of that theme bundle without effort:
 
@@ -257,7 +258,7 @@ shinyApp(ui, server)
 ```
 
 | Theme minty | Theme flatly |
-|:--:|:--:|
+|:----------------------------------:|:----------------------------------:|
 | ![](images/clipboard-712001769.png){width="1000"} | ![](images/clipboard-1693013750.png){width="792"} |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
