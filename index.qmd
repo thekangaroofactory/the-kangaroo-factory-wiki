@@ -1,11 +1,23 @@
 ---
-title: "xxx"
+title: "Home"
 ---
 
-This is a Quarto website.
+# TheKangarooFactory Wiki
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Welcome to this Wiki.
 
-```{r}
-1 + 1
-```
+As most of us do, I tend to keep tons of notes about how to do this or that in a not so organized folder.
+
+The goal of this wiki is to share short how-to articles as well as longer tutorials in an organized environment providing automated features to navigate easily.
+
+-   Folder structure
+
+-   Search across articles
+
+Longer articles will be linked to dedicated repositories inside my GitHub
+
+-   GitHub: <https://github.com/thekangaroofactory>
+
+-   Specific [R](https://github.com/thekangaroofactory?tab=repositories&q=template-r&type=&language=&sort=) templates
+
+-   Specific [Python](https://github.com/thekangaroofactory?tab=repositories&q=template-python&type=&language=&sort=) templates
