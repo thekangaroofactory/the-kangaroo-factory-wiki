@@ -11,10 +11,16 @@ p {
 }
 
 
+/* -- Page title block*/
+.quarto-title-block {
+  margin-bottom: 2rem;
+}
+
+
 /* -- Code chunk */
 div.cell-code {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 

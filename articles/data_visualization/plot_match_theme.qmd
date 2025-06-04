@@ -121,6 +121,7 @@ To do so, you need - *from the server side* - to get the current theme that was 
 And [bslib](https://rstudio.github.io/bslib/) has a handy function for that:
 
 ```{r}
+#| code-fold: true
 #| eval: false
 
 # -- Dependencies
@@ -161,6 +162,7 @@ If you have a look into that theme object, you will soon understand that diving 
 Once again, [bslib](https://rstudio.github.io/bslib/) has made it easy for you and provides a handy [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html) function to get the colors out of that theme bundle without effort:
 
 ```{r}
+#| code-fold: true
 #| eval: false
 
 # -- Define ui
@@ -208,6 +210,7 @@ shinyApp(ui, server)
 Now you just need to pass this variable to the plot function we customized in the first step and get your plot match with the global app theme.
 
 ```{r}
+#| code-fold: true
 #| eval: false
 
 # -- Define ui
