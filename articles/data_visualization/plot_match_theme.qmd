@@ -2,7 +2,11 @@
 title: "How to make your plot match with the global app theme?"
 ---
 
-# How to make your plot match with the global app theme?
+A basic example is provided in the GitHub repository listed in the references & materials section.
+
+::: callout-tip
+A basic example is provided in the GitHub repository listed in the references & materials section. @references
+:::
 
 Plots generated with the [ggplot2](https://ggplot2.tidyverse.org/) library can be customized to improve data visualization & user experience.
 
@@ -43,9 +47,7 @@ Now you just need to pass this variable to the plot function we customized in th
 
 example here
 
-A basic example is provided in the GitHub repository listed in the references & materials section.
-
-## References & materials
+## References & materials {#references}
 
 -   The [bslib](https://rstudio.github.io/bslib/) reference documentation: [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html), [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html), [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html)
 
