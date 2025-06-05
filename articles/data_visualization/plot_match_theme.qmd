@@ -1,5 +1,9 @@
 ---
 title: "How to make your plot match with the global app theme?"
+author: "Philippe PERET"
+date: "2025-06-04"
+categories: [R, ggplot2, bslib, shiny]
+draft: false
 code-fold: true
 ---
 
