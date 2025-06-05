@@ -1,0 +1,185 @@
+---
+title: "How to make ggplot2 object background transparent in Shiny?"
+author: "Philippe PERET"
+date: "2025-06-05"
+categories: [R, ggplot2, shiny]
+draft: false
+code-fold: true
+---
+
+As dark themes tend to become a standard or at least part of a choice given to the user to customize apps and websites look & feel, it's getting more and more important to handle data visualizations that are compatible with dark backgrounds.
+
+By default, a [ggplot2](https://ggplot2.tidyverse.org/) generated object (plot) comes with a white background.
+
+```{r}
+#| echo: true
+
+# -- dependencies
+library(ggplot2)
+
+# -- data
+data <- data.frame(x = c(1, 2, 3, 4),
+                   y = c(12, 23, 8, 32))
+
+# -- build plot
+p <- ggplot(data,
+            aes(x = x, y = y)) +
+  
+  geom_point() +
+  geom_line()
+
+# -- print
+p
+
+```
+
+The default theme is provided by the `theme_grey()` function as stated in the ggplot2 [book](https://ggplot2-book.org/themes.html#sec-themes).\
+If you have a look at its output value, you can discover how this background is managed.
+
+```{r}
+
+# -- get the default theme
+theme <- theme_grey()
+
+# -- explore theme object type
+typeof(theme)
+
+```
+
+The theme object is a (rather long) list.\
+You can use the `names()` function to discover the different elements inside it.
+
+Two of them seem to be of special interest:
+
+-   plot.background
+
+-   panel.background
+
+```{r}
+
+# -- print values
+theme$plot.background
+theme$panel.background
+
+```
+
+As you can see, this confirms what we saw in the default plot above.\
+[Plot](https://ggplot2-book.org/themes.html#plot-elements) background comes with white color and [panel](https://ggplot2-book.org/themes.html#panel-elements) background with a grey fill.
+
+From there you can decide to set these values to match with the desired color (*see* [related](#related) *articles to extend it to the app theme*) or unset these values to get a transparent background.\
+As I don't see any interest in setting background information in multiple places across the code (I tend to manage that in the ui container objects), let's remove those backgrounds from the plot itself.
+
+```{r}
+
+# -- reuse previous plot to update theme
+p <- p +
+  theme(
+    
+    # -- unset backgrounds
+    plot.background = element_blank(),
+    panel.background = element_blank(),
+    
+    # -- also removing the plot grid (it's white by default)
+    panel.grid = element_blank())
+
+# -- print
+p
+
+```
+
+Now the problem is - *in case your plot is rendered in a Shiny app* - that it's actually still displayed with a... white background!
+
+```{r}
+#| eval: false
+
+library(shiny)
+
+# -- Define ui
+ui <- fluidPage(
+  
+  theme = bslib::bs_theme(
+    bg = "#5e5e5e",
+    fg = "#dbdbdb"),
+  
+  h1("Plot"),
+  
+  # -- plot
+  plotOutput("my_plot")
+
+)
+
+
+# -- Define server
+server <- function(input, output) {
+  
+  # -- Display theme object structure
+  output$my_plot <- renderPlot(p)
+
+}
+
+shinyApp(ui, server)
+```
+
+![Shiny app output](images/clipboard-3288107885.png)
+
+That one is tricky as you have probably no idea where this comes from (it took me a bunch of exploration the first time I encountered this problem).\
+Well as often, the answer lies in the `renderPlot` function help which states that ... is used to pass arguments to `plotPNG` .\
+From there, and depending on your graphics device, you can find what argument should be used.
+
+In my case, this is {ragg} and the `agg_png` function accepts both `bg` or `background` arguments that will accept *"transparent"* as a value.
+
+```{r}
+#| eval: false
+
+library(shiny)
+
+# -- Define ui
+ui <- fluidPage(
+  
+  theme = bslib::bs_theme(
+    bg = "#5e5e5e",
+    fg = "#dbdbdb"),
+  
+  h1("Plot"),
+  
+  # -- plot
+  plotOutput("my_plot")
+
+)
+
+
+# -- Define server
+server <- function(input, output) {
+  
+  # -- Display theme object structure
+  output$my_plot <- renderPlot(p, bg = "transparent")
+
+}
+
+shinyApp(ui, server)
+```
+
+![Shiny app output](images/clipboard-1747571972.png)
+
+## Takeaway
+
+So to wrap up this article, remember there are three steps to get a transparent plot in Shiny with ggplot2:
+
+-   Unset the plot background color
+
+-   Unset the panel background fill
+
+-   Set the renderPlot background option to "transparent"
+
+You can find an example in the GitHub repository listed in the references & materials section below.\
+It's linked to the related article listed below as well if you want to extend this to a global theme approach.
+
+## References & materials {#references}
+
+-   [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/themes.html#sec-themes) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.
+
+-   GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
+
+## Related articles {#related}
+
+-   [How to make your plot match with the global app theme?](https://thekangaroofactory.github.io/the-kangaroo-factory-wiki/articles/data_visualization/plot_match_theme.html)
