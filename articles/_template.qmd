@@ -1,0 +1,26 @@
+---
+title: "How to make ... ?"
+author: "Philippe PERET"
+date: "2025-xx-xx"
+categories: [R, ggplot2, bslib, shiny]
+draft: true
+code-fold: true
+---
+
+Some introduction goes here.
+
+```{r}
+#| echo: true
+
+# -- xxx
+
+
+```
+
+A basic example is provided in the GitHub repository listed below in the references & materials section.
+
+## References & materials {#references}
+
+-   The [bslib](https://rstudio.github.io/bslib/) reference documentation:
+
+-   GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
