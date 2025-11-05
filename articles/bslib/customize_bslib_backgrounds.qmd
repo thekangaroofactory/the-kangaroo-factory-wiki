@@ -3,29 +3,24 @@ title: "How to customize {bslib} backgrounds"
 author: "Philippe PERET"
 date: "2025-11-05"
 categories: [R, shiny, bslib, css]
-code-fold: true
+code-fold: false
 execute:
   eval: false
 ---
 
-When it comes to R Shiny web applications, [bslib](https://rstudio.github.io/bslib/) is a great library to manage most of the UI / HTML layout without diving into css.\
-But in some cases - *here we want to set a custom gradient background on a card* - it's necessary to add a bit of css code on top of it.
+When it comes to R Shiny web applications, [bslib](https://rstudio.github.io/bslib/) is a great library to manage most of the UI / HTML layout without diving into css. But in some cases - *here we want to set a custom gradient background on a card* - it's necessary to add a bit of css code on top of it.
 
 ![](images/clipboard-2223557110.png)
 
 This tutorial demonstrates how to achieve this in a simple way.
 
-::: callout-note
-Prerequisites:\
-Actually not much except a basic understanding of css classes and HTML.
-:::
+## Materials
 
-::: callout-tip
-A GitHub repository is available for you to explore in detail several examples around this tutorial.
+A GitHub repository is available for you to explore in detail several examples around this tutorial as well as a video on YouTube.
 
-GitHub repository:\
-[template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
-:::
+-   GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
+
+-   YouTube video: xxx
 
 ## Introduction
 
@@ -34,7 +29,7 @@ And so do bslib.
 
 You can see that by using the inspect command for example on a card object:
 
-![html code for a card()](images/clipboard-1055028054.png)
+![html code for a card()](images/clipboard-1055028054.png){fig-align="left"}
 
 Basically a card is a div with `class = "card"`
 
@@ -53,7 +48,7 @@ Shiny allows users to apply custom CSS files on their application UI, but there 
 In order for the CSS code (or anything) to be available from the browser session, it has to be created in a `www` directory\
 that Shiny will automatically detect and make available.
 
-Create a new folder at the app level (here it's a single file because there will be no server code)
+Create a new folder at the app level (here it's a single file app because there will be no server code)
 
 ![](images/clipboard-4029148784.png)
 
@@ -61,7 +56,6 @@ Now you can use the File + New File + CSS File menu to get a blank CSS file wher
 To make it simple, my file only contains one class.
 
 ```{css}
-
 .my-bg-gradient {
   
   color: #2d3037;
@@ -70,7 +64,6 @@ To make it simple, my file only contains one class.
   background: linear-gradient(to bottom right, #c09f7f, #ba9677, #86614B);
   
 }
-
 ```
 
 Note that this block also contains a color to be applied on the font inside the card.\
@@ -105,9 +98,9 @@ ui <- page_navbar(
 
 Note:
 
-1.  there are different ways to include css in a Shiny app, see the link below to get more information on this
+1.  there are different ways to include css in a Shiny app, see the link in the reference section to get more information on this
 
-2.  there is no need to include `www` in the path to the CSS file (but you could have sub-folder if you want)
+2.  there is no need to include `www` in the path to the CSS file (but you could have sub-folder(s) if you want)
 
 ## Apply the CSS class
 
@@ -155,8 +148,7 @@ card(
 
 As we saw in this tutorial, it's very easy to use custom CSS in your R Shiny app and a great way to go beyond the bootstrap capabilities that are made available to us through [bslib](https://rstudio.github.io/bslib/).
 
-As any CSS class, it can be applied anywhere as long as the HTML component behind accepts to receive a background property.\
-Use them on cards and value boxes to personalize the look & feel of you apps!
+As any CSS class, it can be applied anywhere as long as the HTML component behind accepts to receive a background property. Use them on cards and value boxes to personalize the look & feel of you apps!
 
 Remember, there is a GitHub repository for you to play around with the code as well as a video on YouTube:
 
