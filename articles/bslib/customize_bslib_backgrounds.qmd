@@ -1,0 +1,175 @@
+---
+title: "How to customize {bslib} backgrounds"
+author: "Philippe PERET"
+date: "2025-11-05"
+categories: [R, shiny, bslib, css]
+code-fold: true
+---
+
+When it comes to R Shiny web applications, [bslib](https://rstudio.github.io/bslib/) is a great library to manage most of the UI / HTML layout without diving into css.\
+But in some cases - *here we want to set a custom gradient background on a card* - it's necessary to add a bit of css code on top of it.
+
+![](images/clipboard-2223557110.png)
+
+This tutorial demonstrates how to achieve this in a simple way.
+
+::: callout-note
+Prerequisites:\
+Actually not much except a basic understanding of css classes and HTML.
+:::
+
+::: callout-tip
+A GitHub repository is available for you to explore in detail several examples around this tutorial.
+
+GitHub repository:\
+[template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
+:::
+
+## Introduction
+
+By default, Shiny comes with many CSS classes that are applied on the HTLM components.\
+And so do bslib.
+
+You can see that by using the inspect command for example on a card object:
+
+![html code for a card()](images/clipboard-1055028054.png)
+
+Basically a card is a div with `class = "card"`
+
+So what you want to do is add a custom class on this object, and it can be done with the following steps:
+
+-   create a css file with the code for the custom class
+
+-   include this css code into the Shiny app UI
+
+-   apply the custom class on the selected object(s)
+
+## Create the custom CSS class
+
+Shiny allows users to apply custom CSS files on their application UI, but there is a little trick you need to know.
+
+In order for the CSS code (or anything) to be available from the browser session, it has to be created in a `www` directory\
+that Shiny will automatically detect and make available.
+
+Create a new folder at the app level (here it's a single file because there will be no server code)
+
+![](images/clipboard-4029148784.png)
+
+Now you can use the File + New File + CSS File menu to get a blank CSS file where to create your class.\
+To make it simple, my file only contains one class.
+
+```{css}
+
+.my-bg-gradient {
+  
+  color: #2d3037;
+  
+  background: #c09f7f;
+  background: linear-gradient(to bottom right, #c09f7f, #ba9677, #86614B);
+  
+}
+
+```
+
+Note that this block also contains a color to be applied on the font inside the card.\
+That is because the font color in bslib is ruled by bootstrap so it won't automatically adapt when you apply a custom css.
+
+::: callout-tip
+If you are not familiar with CSS code, there are many online tools to generate code from interactive inputs.\
+You will usually be able to pick among existing gradients in a library or create your own custom gradient by selecting stops & colors.
+
+Here is the one I used for this example:\
+<https://cssgradient.io/>
+:::
+
+Save this file as `theme.css` for example
+
+## Include CSS into Shiny
+
+As I said, Shiny will make the CSS file available from the browser.\
+But it won't apply it automatically on the UI.
+
+For this, you need to include the CSS file into your UI code:
+
+```{r}
+
+# -- Define UI for the application
+ui <- page_navbar(
+  
+  # -- include css
+  header = tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "./theme.css")))
+```
+
+Note:
+
+1.  there are different ways to include css in a Shiny app, see the link below to get more information on this
+
+2.  there is no need to include `www` in the path to the CSS file (but you could have sub-folder if you want)
+
+## Apply the CSS class
+
+All you need to do now is add the class to the card object using the `class` argument (see ?card):
+
+```{r}
+
+card(
+  class = "my-bg-gradient",
+  card_header("Card"),
+  p("This is the card body."))
+
+```
+
+![](images/clipboard-2223557110.png)
+
+Note that the class could be applied at different levels since a card is made of a header and a body.
+
+Apply at card header level:
+
+```{r}
+
+card(
+  card_header(class = "my-bg-gradient", "Card"),
+  p("This is the card body."))
+
+```
+
+![](images/clipboard-730126259.png)
+
+Apply at card body level:
+
+```{r}
+
+card(
+  card_header("Card"),
+  card_body(class = "my-bg-gradient",
+            p("This is the card body.")))
+
+```
+
+![](images/clipboard-2385890305.png)
+
+## Conclusion
+
+As we saw in this tutorial, it's very easy to use custom CSS in your R Shiny app and a great way to go beyond the bootstrap capabilities that are made available to us through [bslib](https://rstudio.github.io/bslib/).
+
+As any CSS class, it can be applied anywhere as long as the HTML component behind accepts to receive a background property.\
+Use them on cards and value boxes to personalize the look & feel of you apps!
+
+Remember, there is a GitHub repository for you to play around with the code as well as a video on YouTube:
+
+-   GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
+
+-   YouTube video: xxx
+
+## References & materials {#references}
+
+-   The [bslib](https://rstudio.github.io/bslib/) reference documentation
+
+-   Shiny documentation: [Using custom CSS in your app](https://shiny.posit.co/r/articles/build/css/)
+
+-   Generate css gradient code: [cssgradient](https://cssgradient.io/)
+
+-   Pick your colors! [HTML color codes](https://htmlcolorcodes.com/)
+
+-   To understand css gradients: [w3schools](https://www.w3schools.com/css/css3_gradients.asp)
