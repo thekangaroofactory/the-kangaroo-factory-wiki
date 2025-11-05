@@ -4,6 +4,8 @@ author: "Philippe PERET"
 date: "2025-11-05"
 categories: [R, shiny, bslib, css]
 code-fold: true
+execute:
+  eval: false
 ---
 
 When it comes to R Shiny web applications, [bslib](https://rstudio.github.io/bslib/) is a great library to manage most of the UI / HTML layout without diving into css.\
