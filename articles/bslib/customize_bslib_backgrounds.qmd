@@ -1,5 +1,5 @@
 ---
-title: "How to customize {bslib} backgrounds"
+title: "How to customize {bslib} backgrounds with CSS"
 author: "Philippe PERET"
 date: "2025-11-05"
 categories: [R, shiny, bslib, css]
