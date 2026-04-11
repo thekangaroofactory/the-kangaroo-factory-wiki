@@ -25,6 +25,6 @@ format:
       - custom.css
     link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: '^(?:http:|https:)\/\/www\.thekangaroofactory\.github\.io\/custom'
+    link-external-filter: '^(?:http:|https:)\/\/www\.thekangaroofactory\.github\.io\/'
 
 editor: visual
