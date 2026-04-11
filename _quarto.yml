@@ -7,7 +7,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      # - about.qmd
   sidebar:
     contents: auto
 
@@ -27,7 +26,6 @@ format:
     css: 
       - gfont/css/quicksand.css
       - custom.css
-    link-external-icon: true
     link-external-newwindow: true
 
 editor: visual
