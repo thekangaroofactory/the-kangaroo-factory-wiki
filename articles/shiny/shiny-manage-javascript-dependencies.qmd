@@ -8,11 +8,13 @@ execute:
   eval: false
 ---
 
-The motivations behind this article are explained in a blog post.
+The motivations behind this article are explained in a blog post:\
+link
 
-A template is delivered for you to play with: [template-r-shiny-javascript-dependencies](https://github.com/thekangaroofactory/template-r-shiny-javascript-dependencies)
+A template is delivered for you to play with:\
+[template-r-shiny-javascript-dependencies](https://github.com/thekangaroofactory/template-r-shiny-javascript-dependencies)
 
-## Start
+## Initial state
 
 Let's start from the very well documented situation where our Shiny app has its JavaScript dependency inserted from the UI side:
 
@@ -45,27 +47,27 @@ shinyApp(ui = ui, server = server)
 
 ```
 
-The JavaScript code is already in a separate file which is a better practice compared to having it stored in a character string within the R code.
-
+The JavaScript code is already in a separate file which is a better practice compared to having it stored in a character string within the R code.\
 It basically contains a single instruction to write something to the browser console:
 
 `console.log("my_script.js has been inserted.");`
 
 ::: callout-note
 For demonstration purpose, the .js file is stored under www/js/my_script.js\
-Also for same reason, we will start with `includeScript()` so that you can actually see the code in the HTML page. We will extend later to JS code delivered along with a package.
+Also for same reason, we will start with `includeScript()` so that you can actually see the code in the HTML page. \
+We will extend later to JS code delivered along with a package.
 :::
 
 Run the app and inspect the page (right click + inspect) in the browser:
 
 ![](images/clipboard-3458969880.png)
 
--   The Javascript code can be seen in the `head` tag
--   It been executed so message is in the console
+-   The Javascript code can be seen in the `head` tag of the HTML tree
+-   It has been executed so the message is visible in the console
 
 ## Move it to server side
 
-Because we want our users not to worry about the package dependencies, we will move this instruction to server side. Because `tags$head()` actually outputs HTML code that would not go anywhere on server side, we need to send that HTML into the UI thanks to `insertUI()`:
+Because we want our users not to worry about the package dependencies, we will move this instruction to the server side. Because `tags$head()` actually outputs HTML code that would not go anywhere on server side, we need to send that HTML into the UI thanks to `insertUI()` function:
 
 ```{r}
 # -- Define UI
@@ -92,7 +94,7 @@ You will get the exact same result as before (hence not duplicating the screensh
 
 ## Wrap into a function
 
-Let's wrap this code into a function – remember we try to hide it from the user.
+Let's wrap this code into a function – remember we try to *hide* it from the user.
 
 ```{r}
 my_function <- function(){
@@ -104,7 +106,7 @@ my_function <- function(){
 }
 ```
 
-Server code looks like this:
+Server code looks like this now:
 
 ```{r}
 # -- Define server logic
@@ -116,7 +118,7 @@ server <- function(input, output) {
 }
 ```
 
-Now say this function is intended to be part of your package and is called to deliver some object (maybe an HTML widget) that requires a JavaScript dependency. It's great because the user won't need to manually insert the JS code on UI side, but what if they call the function multiple times?
+Now say that this function is intended to be part of your package and is called to deliver some object (maybe an HTML widget) that requires a JavaScript dependency. It's great because the user won't need to manually insert the JS code on UI side, but what if they call the function multiple times?
 
 ```{r}
 # -- Define server logic
@@ -146,7 +148,7 @@ An option that I won't demonstrate would be to create a specific input from the 
 While this work, I see two main downsides of this approach:
 
 -   input is a reactive object, which implies you either need a reactive context or to isolate it
--   unless your package function actually needs an input, it feels a bit hacky to go this way
+-   unless your package function actually needs an input, it feels a bit hacky to go this way.
 
 ## Session userData is your friend
 
