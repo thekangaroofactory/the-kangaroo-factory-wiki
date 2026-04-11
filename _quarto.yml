@@ -23,5 +23,8 @@ format:
     css: 
       - gfont/css/quicksand.css
       - custom.css
+    link-external-icon: true
+    link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)\/\/www\.thekangaroofactory\.github\.io\/custom'
 
 editor: visual
