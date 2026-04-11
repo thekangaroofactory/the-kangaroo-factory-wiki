@@ -1,7 +1,7 @@
 ---
 title: "How to automatically manage JavaScript package dependencies?"
 author: "Philippe PERET"
-date: "2025-04-11"
+date: "2026-04-11"
 categories: [R, shiny, javascript]
 code-fold: true
 execute:
@@ -9,7 +9,7 @@ execute:
 ---
 
 The motivations behind this article are explained in a blog post:\
-link
+[Manage JavaScript dependencies from within a package](https://thekangaroofactory.github.io/the-kangaroo-factory-blog/posts/shiny-insert-javascript/)
 
 A template is delivered for you to play with:\
 [template-r-shiny-javascript-dependencies](https://github.com/thekangaroofactory/template-r-shiny-javascript-dependencies)
