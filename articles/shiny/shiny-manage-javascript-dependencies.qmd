@@ -4,6 +4,8 @@ author: "Philippe PERET"
 date: "2025-04-11"
 categories: [R, shiny, javascript]
 code-fold: true
+execute:
+  eval: false
 ---
 
 The motivations behind this article are explained in a blog post.
