@@ -54,7 +54,7 @@ It basically contains a single instruction to write something to the browser con
 
 ::: callout-note
 For demonstration purpose, the .js file is stored under www/js/my_script.js\
-Also for same reason, we will start with `includeScript()` so that you can actually see the code in the HTML page. \
+Also for same reason, we will start with `includeScript()` so that you can actually see the code in the HTML page.\
 We will extend later to JS code delivered along with a package.
 :::
 
@@ -221,7 +221,7 @@ Instead, we would love to see something like:\
 
 Which clearly indicates we have a JavaScript dependency, but doesn't bother showing the entire code.
 
-There are multiple ways to achieve this, but I believe the `htmlDependency` option described in the Shiny [documentation](#0){style="font-size: 11pt;"} is a great one:
+There are multiple ways to achieve this, but I believe the `htmlDependency` option described in the Shiny [documentation](https://shiny.posit.co/r/articles/build/packaging-javascript/#htmldependency-object) is a great one:
 
 ```{r}
 my_function <- function(session = getDefaultReactiveDomain()){
