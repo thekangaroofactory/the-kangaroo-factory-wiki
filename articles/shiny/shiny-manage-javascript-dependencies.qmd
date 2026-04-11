@@ -1,6 +1,5 @@
 ---
 title: "How to automatically manage JavaScript package dependencies?"
-author: "Philippe PERET"
 date: "2026-04-11"
 categories: [R, shiny, javascript]
 code-fold: true

@@ -11,6 +11,10 @@ website:
   sidebar:
     contents: auto
 
+author:
+  - name: Philippe PERET
+    orcid: 0009-0003-9666-7490
+
 format:
   html:
     grid:

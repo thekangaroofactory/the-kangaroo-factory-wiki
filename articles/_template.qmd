@@ -1,6 +1,5 @@
 ---
 title: "How to make ... ?"
-author: "Philippe PERET"
 date: "2025-xx-xx"
 categories: [R, ggplot2, bslib, shiny]
 draft: true

@@ -1,6 +1,5 @@
 ---
 title: "How to make ggplot2 object background transparent in Shiny?"
-author: "Philippe PERET"
 date: "2025-06-05"
 categories: [R, ggplot2, shiny]
 draft: false
