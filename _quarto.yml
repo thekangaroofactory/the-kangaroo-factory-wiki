@@ -2,7 +2,9 @@ project:
   type: website
 
 website:
-  title: "Wiki"
+  title: "TheKangarooFactory Wiki"
+  site-url: https://thekangaroofactory.github.io/the-kangaroo-factory-wiki/
+  description: "Yet another wiki about data science."
   navbar:
     left:
       - href: index.qmd

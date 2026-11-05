@@ -1,5 +1,7 @@
 ---
 title: "Welcome"
+listing:
+  feed: true
 ---
 
 Welcome to this Wiki.
@@ -11,10 +13,10 @@ You can either navigate the folder structure in the left sidebar or use the sear
 
 Longer articles will be linked to dedicated repositories inside my GitHub:
 
--   GitHub: <https://github.com/thekangaroofactory>
+- GitHub: <https://github.com/thekangaroofactory>
 
 You can also have a look at R / Python templates:
 
--   Specific [R](https://github.com/thekangaroofactory?tab=repositories&q=template-r&type=&language=&sort=) templates
+- Specific [R](https://github.com/thekangaroofactory?tab=repositories&q=template-r&type=&language=&sort=) templates
 
--   Specific [Python](https://github.com/thekangaroofactory?tab=repositories&q=template-python&type=&language=&sort=) templates
+- Specific [Python](https://github.com/thekangaroofactory?tab=repositories&q=template-python&type=&language=&sort=) templates
