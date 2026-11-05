@@ -1,5 +1,7 @@
 ---
 title: "Welcome"
+listing:
+  feed: true
 ---
 
 Welcome to this Wiki.
