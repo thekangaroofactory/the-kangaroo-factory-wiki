@@ -9,6 +9,9 @@ website:
     left:
       - href: index.qmd
         text: Home
+    right:
+      - icon: rss
+        href: index.xml
   sidebar:
     contents: auto
 
