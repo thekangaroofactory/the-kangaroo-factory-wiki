@@ -16,13 +16,13 @@ website:
     contents:
       - section: "Data Visualization"
         contents:
-          - data-visualization/*/index.qmd
+          - articles/data-visualization/*/index.qmd
       - section: "Shiny"
         contents:
-          - shiny/*/index.qmd
+          - articles/shiny/*/index.qmd
       - section: "bslib"
         contents:
-          - bslib/*/index.qmd
+          - articles/bslib/*/index.qmd
 
 author:
   - name: Philippe PERET
