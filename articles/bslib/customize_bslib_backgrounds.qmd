@@ -2,6 +2,7 @@
 title: "How to customize {bslib} backgrounds with CSS"
 date: "2025-11-05"
 categories: [R, shiny, bslib, css]
+image: "thumbnail.jpg"
 code-fold: false
 execute:
   eval: false
@@ -17,9 +18,8 @@ This tutorial demonstrates how to achieve this in a simple way.
 
 A GitHub repository is available for you to explore in detail several examples around this tutorial as well as a video on YouTube.
 
--   GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
-
--   YouTube video: xxx
+- GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
+- YouTube video: xxx
 
 ## Introduction
 
@@ -34,11 +34,9 @@ Basically a card is a div with `class = "card"`
 
 So what you want to do is add a custom class on this object, and it can be done with the following steps:
 
--   create a css file with the code for the custom class
-
--   include this css code into the Shiny app UI
-
--   apply the custom class on the selected object(s)
+- create a css file with the code for the custom class
+- include this css code into the Shiny app UI
+- apply the custom class on the selected object(s)
 
 ## Create the custom CSS class
 
@@ -149,20 +147,14 @@ As we saw in this tutorial, it's very easy to use custom CSS in your R Shiny app
 
 As any CSS class, it can be applied anywhere as long as the HTML component behind accepts to receive a background property. Use them on cards and value boxes to personalize the look & feel of you apps!
 
-Remember, there is a GitHub repository for you to play around with the code as well as a video on YouTube:
+Remember, there is a GitHub repository for you to play around with the code:
 
--   GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
-
--   YouTube video: xxx
+- GitHub repository: [template-r-shiny-bslib-backgrounds](https://github.com/thekangaroofactory/template-r-shiny-bslib-backgrounds "link to template")
 
 ## References & materials {#references}
 
--   The [bslib](https://rstudio.github.io/bslib/) reference documentation
-
--   Shiny documentation: [Using custom CSS in your app](https://shiny.posit.co/r/articles/build/css/)
-
--   Generate css gradient code: [cssgradient](https://cssgradient.io/)
-
--   Pick your colors! [HTML color codes](https://htmlcolorcodes.com/)
-
--   To understand css gradients: [w3schools](https://www.w3schools.com/css/css3_gradients.asp)
+- The [bslib](https://rstudio.github.io/bslib/) reference documentation
+- Shiny documentation: [Using custom CSS in your app](https://shiny.posit.co/r/articles/build/css/)
+- Generate css gradient code: [cssgradient](https://cssgradient.io/)
+- Pick your colors! [HTML color codes](https://htmlcolorcodes.com/)
+- To understand css gradients: [w3schools](https://www.w3schools.com/css/css3_gradients.asp)
