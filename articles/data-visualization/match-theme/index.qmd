@@ -2,6 +2,7 @@
 title: "How to make your plot match with the global app theme?"
 date: "2025-06-04"
 categories: [R, ggplot2, bslib, shiny]
+image: "thumbnail.jpg"
 draft: false
 code-fold: true
 ---

@@ -2,6 +2,7 @@
 title: "How to automatically manage JavaScript package dependencies?"
 date: "2026-04-11"
 categories: [R, shiny, javascript]
+image: "thumbnail.jpg"
 code-fold: true
 execute:
   eval: false
@@ -61,8 +62,8 @@ Run the app and inspect the page (right click + inspect) in the browser:
 
 ![](images/clipboard-3458969880.png)
 
--   The Javascript code can be seen in the `head` tag of the HTML tree
--   It has been executed so the message is visible in the console
+- The Javascript code can be seen in the `head` tag of the HTML tree
+- It has been executed so the message is visible in the console
 
 ## Move it to server side
 
@@ -146,8 +147,8 @@ An option that I won't demonstrate would be to create a specific input from the 
 
 While this work, I see two main downsides of this approach:
 
--   input is a reactive object, which implies you either need a reactive context or to isolate it
--   unless your package function actually needs an input, it feels a bit hacky to go this way.
+- input is a reactive object, which implies you either need a reactive context or to isolate it
+- unless your package function actually needs an input, it feels a bit hacky to go this way.
 
 ## Session userData is your friend
 
