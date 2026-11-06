@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "TheKangarooFactory Wiki"
+  title: "TKF Wiki"
   site-url: https://thekangaroofactory.github.io/the-kangaroo-factory-wiki/
   description: "Yet another wiki about data science."
   navbar:
