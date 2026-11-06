@@ -263,13 +263,13 @@ shinyApp(ui, server)
 ```
 
 |             Theme minty              |            Theme flatly             |
-|:----------------------------------:|:----------------------------------:|
+|:------------------------------------:|:-----------------------------------:|
 | ![](images/clipboard-3381752280.png) | ![](images/clipboard-849529216.png) |
 
 A basic example is provided in the GitHub repository listed below in the references & materials section.
 
 ## References & materials {#references}
 
--   The [bslib](https://rstudio.github.io/bslib/) reference documentation: [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html), [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html), [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html)
+- The [bslib](https://rstudio.github.io/bslib/) reference documentation: [bs_theme()](https://rstudio.github.io/bslib/reference/bs_theme.html), [bs_current_theme()](https://rstudio.github.io/bslib/reference/bs_current_theme.html), [bs_get_variables()](https://rstudio.github.io/bslib/reference/bs_get_variables.html)
 
--   GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
+- GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)

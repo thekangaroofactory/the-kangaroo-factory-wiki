@@ -50,9 +50,9 @@ You can use the `names()` function to discover the different elements inside it.
 
 Two of them seem to be of special interest:
 
--   plot.background
+- plot.background
 
--   panel.background
+- panel.background
 
 ```{r}
 
@@ -164,21 +164,21 @@ shinyApp(ui, server)
 
 So to wrap up this article, remember there are three steps to get a transparent plot in Shiny with ggplot2:
 
--   Unset the plot background color
+- Unset the plot background color
 
--   Unset the panel background fill
+- Unset the panel background fill
 
--   Set the renderPlot background option to "transparent"
+- Set the renderPlot background option to "transparent"
 
 You can find an example in the GitHub repository listed in the references & materials section below.\
 It's linked to the related article listed below as well if you want to extend this to a global theme approach.
 
 ## References & materials {#references}
 
--   [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/themes.html#sec-themes) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/themes.html#sec-themes) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.
 
--   GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
+- GitHub repository: [template-r-plot-theme](https://github.com/thekangaroofactory/template-r-plot-theme)
 
 ## Related articles {#related}
 
--   [How to make your plot match with the global app theme?](https://thekangaroofactory.github.io/the-kangaroo-factory-wiki/articles/data_visualization/plot_match_theme.html)
+- [How to make your plot match with the global app theme?](https://thekangaroofactory.github.io/the-kangaroo-factory-wiki/articles/data_visualization/plot_match_theme.html)
