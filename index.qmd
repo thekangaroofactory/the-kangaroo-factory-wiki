@@ -11,12 +11,9 @@ As most of us do, I tend to keep tons of notes about how to do this or that in a
 The goal of this wiki is to share short how-to articles as well as longer tutorials in an organized environment providing automated features to navigate easily.\
 You can either navigate the folder structure in the left sidebar or use the search in the navbar.
 
-Longer articles will be linked to dedicated repositories inside my GitHub:
-
-- GitHub: <https://github.com/thekangaroofactory>
-
 You can also have a look at R / Python templates:
 
 - Specific [R](https://github.com/thekangaroofactory?tab=repositories&q=template-r&type=&language=&sort=) templates
-
 - Specific [Python](https://github.com/thekangaroofactory?tab=repositories&q=template-python&type=&language=&sort=) templates
+
+## Articles
