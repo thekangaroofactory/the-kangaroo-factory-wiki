@@ -15,14 +15,11 @@ website:
   sidebar:
     contents:
       - section: "Data Visualization"
-        contents:
-          - articles/data-visualization/*/index.qmd
+        contents: articles/data-visualization/*/index.qmd
       - section: "Shiny"
-        contents:
-          - articles/shiny/*/index.qmd
+        contents: shiny/*/index.qmd
       - section: "bslib"
-        contents:
-          - articles/bslib/*/index.qmd
+        contents: /articles/bslib/*/index.qmd
 
 author:
   - name: Philippe PERET
