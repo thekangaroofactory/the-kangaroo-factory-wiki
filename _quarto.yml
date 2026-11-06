@@ -13,7 +13,16 @@ website:
       - icon: rss
         href: index.xml
   sidebar:
-    contents: auto
+    contents:
+      - section: "Data Visualization"
+        contents:
+          - data-visualization/*/index.qmd
+      - section: "Shiny"
+        contents:
+          - shiny/*/index.qmd
+      - section: "bslib"
+        contents:
+          - bslib/*/index.qmd
 
 author:
   - name: Philippe PERET
